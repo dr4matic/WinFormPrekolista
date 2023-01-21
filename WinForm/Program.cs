@@ -1,10 +1,11 @@
+using WinForm.Engine;
 using WinForm.Forms;
 
 namespace WinForm
 {
     internal static class Program
     {
-        private static ApplicationContext _context;
+        private static UIApplicationContext _context;
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -14,7 +15,7 @@ namespace WinForm
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            _context = new ApplicationContext();
+            _context = new UIApplicationContext();
             _context.MainForm = new Login(_context);
             Application.Run(_context);
 
