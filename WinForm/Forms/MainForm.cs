@@ -9,7 +9,7 @@ namespace WinForm
         public MainForm(string userName): this()
         {
             this.userName = userName;
-               
+            
         }
         public MainForm()
         {
