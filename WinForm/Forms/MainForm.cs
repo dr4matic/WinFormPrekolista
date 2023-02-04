@@ -41,7 +41,7 @@ namespace WinForm
                 button.Size = new Size(100, 100);
                 button.TabIndex = 1;
                 button.Text = "";
-                button.Font = new Font(FontFamily.GenericMonospace, 30, GraphicsUnit.Point);
+                button.Font = new Font(FontFamily.GenericMonospace, 12, GraphicsUnit.Point);
                 button.ForeColor = Color.Black;
                 button.UseVisualStyleBackColor = true;
                 button.Click += ButtonClick;
@@ -58,6 +58,7 @@ namespace WinForm
             }
             button.Text = xo ? "X" : "O";
             xo = !xo;
+            button.Click-= ButtonClick;
         }
     }
 }
