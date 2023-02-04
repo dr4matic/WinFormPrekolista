@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Accessibility;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,33 @@ namespace WinForm.GameRules
 {
     public class Line
     {
-        private List<string> elements = new();
+        public delegate void Win(GameElements gameElements);
 
+        private List<GameElements> _elements = new();
+
+        public event Win OnWin;
+        
+        public bool AddElement(GameElements gameElements)
+        {
+            if(_elements.Count == 3)
+            {
+                return false;
+            }
+            _elements.Add(gameElements);
+            CheckAllSame();
+            return true;
+        }
+        private void CheckAllSame()
+        {
+            var result = _elements
+                .Distinct()
+                .Count() == 1;
+
+            if (result && _elements.Count == 3)
+            {
+                OnWin?.Invoke(_elements[0]);
+            }
+        
+        }
     }
 }
