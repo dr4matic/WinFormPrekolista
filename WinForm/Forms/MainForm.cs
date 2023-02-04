@@ -3,9 +3,18 @@ using System.Xml.Linq;
 using WinForm.Engine;
 using System.Drawing;
 using System.Globalization;
+using WinForm.GameRules;
 
 namespace WinForm
 {
+    public class GameButton : Button
+    {
+        public GameButton(ICollection<Line> lines)
+        {
+
+        }
+    }
+        
 
     public partial class MainForm : Form
     {
@@ -51,8 +60,7 @@ namespace WinForm
 
         private void ButtonClick(object? sender, EventArgs e)
         {
-            var button = sender as Button;
-            if (button == null)
+            if (sender is not Button button)
             {
                 return;
             }
