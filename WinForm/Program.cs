@@ -16,7 +16,7 @@ namespace WinForm
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             _context = new UIApplicationContext();
-            _context.MainForm = new Login(_context);
+            _context.MainForm = new MainForm(_context);
             Application.Run(_context);
 
             
