@@ -9,15 +9,16 @@ namespace WinForm.GameRules
 {
     public class Line
     {
-        public delegate void Win(GameElements gameElements);
+        public delegate void LineEvent(GameElements gameElements);
 
         private List<GameElements> _elements = new();
 
-        public event Win OnWin;
-        
+        public event LineEvent OnWin;
+        public event LineEvent OnDraw;
+
         public bool AddElement(GameElements gameElements)
         {
-            if(_elements.Count == 3)
+            if (_elements.Count == 3)
             {
                 return false;
             }
@@ -35,7 +36,11 @@ namespace WinForm.GameRules
             {
                 OnWin?.Invoke(_elements[0]);
             }
-        
+            else if (_elements.Count == 3)
+            {
+                OnDraw?.Invoke(_elements[0]);
+            }
+
         }
     }
 }
