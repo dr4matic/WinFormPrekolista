@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameEngine.GameRules;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,19 +10,13 @@ namespace WinForm.Controls
 {
     public class GameButton : Button
     {
-        private readonly ICollection<Line> lines;
+        public Cell Cell { get; private set; }
 
-        public GameButton(ICollection<Line> lines)
+        public GameButton(Cell gamecell)
             : base()
             {
-            this.lines = lines;
+            this.Cell = gamecell;
         }
-    public void AddValue(GameElements gameElement)
-        {
-            foreach(var line in lines)
-            {
-                line.AddElement(gameElement);
-            }
-        }
+    
     }
 }
