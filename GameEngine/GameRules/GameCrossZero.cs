@@ -70,8 +70,9 @@ namespace GameEngine.GameRules
             }
         }
 
-        public GameElements Move(Cell gamecell)
+        public async Task<GameElements> Move(Cell gamecell)
         {
+            await Task.Yield();
             var value = xo
             ? GameElements.Cross
             : GameElements.Zero;

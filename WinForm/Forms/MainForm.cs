@@ -84,22 +84,35 @@ namespace WinForm
             Restart();  
           
         }
-        private void ButtonClick(object? sender, EventArgs e)
+        private async void ButtonClick(object? sender, EventArgs e)
         {
+            await Task.Yield();
             if (sender is not GameButton button)
             {
                 return;
             }
 
-            var result = _game.Move(button.Cell);
-            
-            button.Text = result switch
+            var result = await _game.Move(button.Cell);
+
+            var action = () =>
             {
-                GameElements.Zero => "O",
-                GameElements.Cross => "X",
+                button.Text = result switch
+                {
+                    GameElements.Zero => "O",
+                    GameElements.Cross => "X",
+                    _ => throw new Exception($"Unknown value {result}")
+                };
+
+                button.Click -= ButtonClick;
             };
-            
-            button.Click-= ButtonClick;
+            if (InvokeRequired)
+            {
+                button.Invoke(action);
+            }
+            else
+            {
+                action();
+            }
            
         }
     }
