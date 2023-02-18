@@ -1,6 +1,6 @@
 ﻿using System.Formats.Asn1;
 
-namespace Storage.Entitys
+namespace GameEngine.Common.Entitys
 {
     public record UserInfo(int Id, string Name, uint score)
     {
