@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GameEngine\GameEngine.csproj" />
+    <ProjectReference Include="..\Storage\Storage.csproj" />
   </ItemGroup>
 
   <ItemGroup>

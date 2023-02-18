@@ -105,14 +105,7 @@ namespace WinForm
 
                 button.Click -= ButtonClick;
             };
-            if (InvokeRequired)
-            {
-                button.Invoke(action);
-            }
-            else
-            {
-                action();
-            }
+            action.InvokeUI(button);
            
         }
     }
