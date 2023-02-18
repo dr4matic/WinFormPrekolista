@@ -14,7 +14,7 @@ namespace GameEngine.GameRules
         private int drawLines = 0;
         private bool xo = false;
         private List<Cell> buttons = new();
-        private GameElements winner;
+        private GameElements? winner;
 
         public delegate void GameWinner(GameElements gameElements);
 

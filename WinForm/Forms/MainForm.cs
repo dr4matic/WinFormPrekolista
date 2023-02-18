@@ -68,19 +68,20 @@ namespace WinForm
         }
         
 
-        private void GameWin(GameElements gameElements)
+        private async void GameWin(GameElements gameElements)
         {
+            await Task.Yield();
             MessageBox.Show($"Победил игрок {gameElements}");
             Restart();
         }
 
 
 
-        private void GameDraw(GameElements gameElements)
+        private async void GameDraw(GameElements gameElements)
         {
-           
-                MessageBox.Show($"Ничья");
-                Restart();  
+            await Task.Yield();
+            MessageBox.Show($"Ничья");
+            Restart();  
           
         }
         private void ButtonClick(object? sender, EventArgs e)
