@@ -36,11 +36,27 @@ namespace WinForm
             dbContext.Database.EnsureCreated(); 
             dbContext.Database.Migrate();
 
-            dbContext.Set<UserInfo>().Add(new UserInfo(1, "first"));
-            dbContext.SaveChanges();
+            /*for(var i = 0; i< 10; i++)
+            {
+                dbContext.Set<UserInfo>().Add(new UserInfo($"User {i}"));
+            }
+
+            dbContext.SaveChanges();*/
 
             var user = dbContext.Set<UserInfo>()
-                .FirstOrDefault(x => x.Id == 1);
+                .AsNoTracking()
+                .FirstOrDefault(x => x.Id == 5);
+
+            user = user with { score = 1000 };
+            dbContext.Set<UserInfo>().Update(user);
+            dbContext.SaveChanges();
+
+            var users = dbContext.Set<UserInfo>()
+                .ToList();
+            if (users != null)
+            {
+
+            }
         }
     }
 }

@@ -18,16 +18,21 @@ namespace Storage
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder
+                .Entity<GameInfo>(b =>
+                {
+                    b.ToTable(nameof(GameInfo));
+                    b.HasKey(e => e.Id);
+                    b.Property(e => e.Id).ValueGeneratedOnAdd();
+                });
 
             modelBuilder
-                .Entity<GameInfo>()
-                .ToTable(nameof(GameInfo))
-                .HasKey(e => e.Id);
-
-            modelBuilder
-                .Entity<GameInfo>()
-                .ToTable(nameof(GameInfo))
-                .HasKey(e => e.Name);
+                .Entity<UserInfo>(b =>
+                {
+                    b.ToTable(nameof(UserInfo));
+                    b.HasKey(e => e.Id);
+                    b.Property(e => e.Id).ValueGeneratedOnAdd();
+                });
         }
 
     }
